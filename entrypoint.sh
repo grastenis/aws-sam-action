@@ -30,6 +30,10 @@ function installAwsSam(){
 }
 
 function runSam(){
+	if [ "${INPUT_SAM_WORKING_DIR}" != "" ]; then
+		echo "Changing dir to ${INPUT_SAM_WORKING_DIR}"
+		cd ${INPUT_SAM_WORKING_DIR}
+	fi
 	echo "Run sam ${INPUT_SAM_COMMAND}"
 	output=$(sam ${INPUT_SAM_COMMAND} 2>&1)
 	exitCode=${?}
